@@ -30,7 +30,6 @@ class SummaryActivity : AppCompatActivity() {
         binding.PRO.text = pro
 
 
-
     }
 
 
