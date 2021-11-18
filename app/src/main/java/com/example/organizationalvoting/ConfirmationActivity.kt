@@ -4,11 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.organizationalvoting.databinding.ActivityConfirmationBinding
+import java.util.*
 
 class ConfirmationActivity : AppCompatActivity() {
 
     private val message by lazy {binding.txtMessage}
+    private val date by lazy {binding.txtDate}
     private  var end = "Thank you!"
+    private  var time = "${Calendar.getInstance().time}"
 
     private lateinit var binding: ActivityConfirmationBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +26,7 @@ class ConfirmationActivity : AppCompatActivity() {
         end = "Thank you! $enteredfName $enteredlName"
 
         message.text = end
+        date.text = time
 
 
 
