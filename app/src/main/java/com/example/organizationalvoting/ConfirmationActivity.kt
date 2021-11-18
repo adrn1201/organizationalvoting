@@ -6,6 +6,10 @@ import android.os.Bundle
 import com.example.organizationalvoting.databinding.ActivityConfirmationBinding
 
 class ConfirmationActivity : AppCompatActivity() {
+
+    private val message by lazy {binding.txtMessage}
+    private  var end = "Thank you!"
+
     private lateinit var binding: ActivityConfirmationBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -13,11 +17,19 @@ class ConfirmationActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        val enteredfName = intent.getStringExtra(FNAME)
+        val enteredlName = intent.getStringExtra(LNAME)
+
+        end = "Thank you! $enteredfName $enteredlName"
+
+        message.text = end
+
+
+
 
         binding.btnDone.setOnClickListener {
-            //var coinz = inputCoin.text.toString()
             val intent = Intent ( this, MainActivity::class.java)
-            intent.putExtra(USERNAME, NAMEUSER)
+            intent.putExtra(FNAME, LNAME)
             startActivityForResult(intent, REQUEST_CODE)
         }
     }
