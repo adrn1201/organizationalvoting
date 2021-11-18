@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Codes/andriod/organizationalvoting/app/src/main/res/layout/activity_confirmation.xml" value="0.36666666666666664" />
-        <entry key="..\:/Codes/andriod/organizationalvoting/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Codes/andriod/organizationalvoting/app/src/main/res/layout/activity_summary.xml" value="0.33" />
-        <entry key="..\:/Codes/andriod/organizationalvoting/app/src/main/res/layout/activity_voting.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Carlo Nepomuceno/Desktop/MOBDEVT Finals/organizationalvoting/app/src/main/res/layout/activity_confirmation.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Carlo Nepomuceno/Desktop/MOBDEVT Finals/organizationalvoting/app/src/main/res/layout/activity_summary.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Carlo Nepomuceno/Desktop/MOBDEVT Finals/organizationalvoting/app/src/main/res/layout/activity_voting.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Jan/Desktop/COLLEGE/6/MOBDEVT/organizationalvoting/app/src/main/res/layout/activity_confirmation.xml" value="0.3541666666666667" />
+        <entry key="..\:/Users/Jan/Desktop/COLLEGE/6/MOBDEVT/organizationalvoting/app/src/main/res/layout/activity_main.xml" value="0.3541666666666667" />
+        <entry key="..\:/Users/Jan/Desktop/COLLEGE/6/MOBDEVT/organizationalvoting/app/src/main/res/layout/activity_summary.xml" value="0.3541666666666667" />
       </map>
     </option>
   </component>
