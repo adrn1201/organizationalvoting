@@ -14,7 +14,7 @@ class ConfirmationActivity : AppCompatActivity() {
 
 
 
-        binding.btndone.setOnClickListener {
+        binding.btnDone.setOnClickListener {
             //var coinz = inputCoin.text.toString()
             val intent = Intent ( this, MainActivity::class.java)
             intent.putExtra(USERNAME, NAMEUSER)
