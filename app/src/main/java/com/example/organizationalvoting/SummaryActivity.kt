@@ -8,6 +8,11 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.organizationalvoting.databinding.ActivitySummaryBinding
+import java.text.SimpleDateFormat
+
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class SummaryActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySummaryBinding
@@ -22,6 +27,10 @@ class SummaryActivity : AppCompatActivity() {
         val secretary = intent.getStringExtra(INPUT_SECRETARY)
         val treasurer = intent.getStringExtra(INPUT_TREASURER)
         val pro = intent.getStringExtra(INPUT_PRO)
+
+        val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
+
+        binding.dateTime.text = formatter.format(Date())
 
         binding.president.text = president
         binding.vicePresident.text = vp
