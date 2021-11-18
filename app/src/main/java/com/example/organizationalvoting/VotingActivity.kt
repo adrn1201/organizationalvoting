@@ -14,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import com.example.organizationalvoting.databinding.ActivityVotingBinding
 import com.example.organizationalvoting.viewModel.ViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class VotingActivity : AppCompatActivity() {
     private lateinit var startForResult: ActivityResultLauncher<Intent>
@@ -32,19 +33,25 @@ class VotingActivity : AppCompatActivity() {
            result: ActivityResult -> validateIntent(result)
         }
 
+        binding.btnBackRegister.setOnClickListener {
+            val intent = Intent ( this, MainActivity::class.java)
+            startActivityForResult(intent, REQUEST_CODE)
+        }
+
         val viewModel by viewModels<ViewModel>()
         displayData(viewModel)
         initializeComponents()
+
     }
 
     private fun validateIntent(result: ActivityResult) {
-        if (result.resultCode == RESULT_OK) {
-            val intent = result.data/*?.getStringExtra(RETURN_PRESIDENT)
-            binding.editCoinAmount.setText(intent.toString())
-            Snackbar.make(binding.editCoinAmount,
-                getString(R.string.snackBar_main, intent), Snackbar.LENGTH_SHORT).show()*/
-        }
-    }
+       if (result.resultCode == RESULT_OK) {
+          val intent = result.data?.getStringExtra(RETURN_PRESIDENT)
+           //binding.spinnerPresident.set(intent.toString())
+           /*Snackbar.make(binding.editCoinAmount,
+               getString(R.string.snackBar_main, intent), Snackbar.LENGTH_SHORT).show()*/
+      }
+   }
 
     private fun displayData(viewModel: ViewModel) {
         viewModel.president.observe(this) {

@@ -29,6 +29,18 @@ class SummaryActivity : AppCompatActivity() {
         binding.treaasurer.text = treasurer
         binding.PRO.text = pro
 
+        binding.btnNextConfirm.setOnClickListener {
+            val intent = Intent ( this, ConfirmationActivity::class.java)
+            startActivityForResult(intent, REQUEST_CODE)
+        }
+
+        binding.btnBackVote.setOnClickListener {
+            val data = Intent()
+            data.putExtra(RETURN_PRESIDENT, president)
+            setResult(Activity.RESULT_OK, data)
+            super.finish()
+        }
+
 
     }
 
