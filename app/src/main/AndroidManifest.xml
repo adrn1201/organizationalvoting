@@ -18,6 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ConfirmationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SummaryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".VotingActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
