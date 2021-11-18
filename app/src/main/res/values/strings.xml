@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Organizational Voting</string>
+    <string name="selected_president">Selected President:</string>
+    <string-array name="president">
+        <item>Leni Robredo</item>
+        <item>BongBong Marcos</item>
+        <item>Rastaman</item>
+        <item>Manny Pacquiao</item>
+        <item>Bong Go</item>
+        <item>Ping Lacson</item>
+    </string-array>
 </resources>
