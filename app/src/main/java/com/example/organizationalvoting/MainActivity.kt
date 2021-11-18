@@ -17,8 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        startForResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+        startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
            validateIntent(result)
         }
 
@@ -47,10 +46,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun validateIntent(result: ActivityResult) {
         if (result.resultCode == RESULT_OK) {
-            val intent = result.data/*.getIntExtra(RETURN_KEY, 0)
-                binding.editCoinAmount.setText(intent.toString())
-                Snackbar.make(binding.editCoinAmount,
-                    getString(R.string.snackBar_main, intent), Snackbar.LENGTH_SHORT).show()*/
+            val intent = result.data
         }
     }
 }
