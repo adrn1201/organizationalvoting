@@ -22,25 +22,26 @@ class ConfirmationActivity : AppCompatActivity() {
         binding = ActivityConfirmationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        fun generateRandomString(len: Int = 15): String{
-            val alphanumerics = CharArray(26) { it -> (it + 97).toChar() }.toSet()
-                .union(CharArray(9) { it -> (it + 48).toChar() }.toSet())
-            return (0..len-1).map {
-                alphanumerics.toList().random()
-            }.joinToString("")
+        fun randomAlphanumericString(): String {
+            val charPool: List<Char> = ('A'..'Z') + ('a'..'z') + ('0'..'9')
+            val outputStrLength = (45..100).shuffled().first()
+
+            return (45..outputStrLength)
+                .map{ kotlin.random.Random.nextInt(45, charPool.size) }
+                .map(charPool::get)
+                .joinToString("")
         }
 
 
         val enteredfName = intent.getStringExtra(FNAME)
         val enteredlName = intent.getStringExtra(LNAME)
 
-        confirmation = "Confirmation: " + "#" + generateRandomString()
+        confirmation = "Confirmation: " + "#" + randomAlphanumericString()
         end = "Thank you! $enteredfName $enteredlName"
 
         val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
 
         binding.txtDate.text = formatter.format(Date())
-
         conn.text = confirmation
         message.text = end
         //date.text = time
