@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
             var fName = firstName.text.toString()
             var lName = lastName.text.toString()
 
-            val intent = Intent ( this, ConfirmationActivity::class.java)
+            val intent = Intent ( this, VotingActivity::class.java)
             intent.putExtra(FNAME, fName)
             intent.putExtra(LNAME, lName)
 
