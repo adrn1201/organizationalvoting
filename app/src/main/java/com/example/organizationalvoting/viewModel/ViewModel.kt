@@ -3,6 +3,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.organizationalvoting.util.Helper
+import com.google.android.material.snackbar.Snackbar
 
 class ViewModel: ViewModel() {
     private val _president = MutableLiveData<Array<String>>()
@@ -23,5 +24,12 @@ class ViewModel: ViewModel() {
         _secretary.value = Helper.getSecretary()
         _treasurer.value = Helper.getTreasurer()
         _pro.value = Helper.getPro()
+    }
+
+    fun test(value: Any): Boolean{
+        if(value.toString() == "Choose a President"){
+            return false
+        }
+        return true
     }
 }

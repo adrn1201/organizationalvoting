@@ -24,11 +24,13 @@ class VotingActivity : AppCompatActivity() {
     private val spinnerSecretary by lazy { binding.spinnerSecretary }
     private val spinnerTreasurer by lazy { binding.spinnerTreasurer }
     private val spinnerPro by lazy { binding.spinnerPro }
-
+    private val viewModel by viewModels<ViewModel>()
+    private var test: String? = "test"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVotingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        test = intent.getStringExtra(FNAME)
         startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
            result: ActivityResult -> validateIntent(result)
         }
@@ -38,7 +40,7 @@ class VotingActivity : AppCompatActivity() {
             startActivityForResult(intent, REQUEST_CODE)
         }
 
-        val viewModel by viewModels<ViewModel>()
+
         displayData(viewModel)
         initializeComponents()
 
@@ -54,26 +56,17 @@ class VotingActivity : AppCompatActivity() {
    }
 
     private fun displayData(viewModel: ViewModel) {
-        viewModel.president.observe(this) {
-            getData(it, spinnerPresident)
-        }
-        viewModel.vicePresident.observe(this) {
-            getData(it, spinnerVp)
-        }
-        viewModel.secretary.observe(this) {
-            getData(it, spinnerSecretary)
-        }
-        viewModel.treasurer.observe(this) {
-            getData(it, spinnerTreasurer)
-        }
-        viewModel.pro.observe(this) {
-            getData(it, spinnerPro)
-        }
+        viewModel.president.observe(this) { getData(it, spinnerPresident) }
+        viewModel.vicePresident.observe(this) { getData(it, spinnerVp) }
+        viewModel.secretary.observe(this) { getData(it, spinnerSecretary) }
+        viewModel.treasurer.observe(this) { getData(it, spinnerTreasurer) }
+        viewModel.pro.observe(this) { getData(it, spinnerPro) }
     }
 
     private fun getData(it: Array<String>, spinner:Spinner) {
         val adapter = ArrayAdapter(this, simple_spinner_item, it)
         spinner.adapter = adapter
+
     }
 
     private fun initializeComponents() {
@@ -83,13 +76,12 @@ class VotingActivity : AppCompatActivity() {
         }
         binding.btnNextSum.setOnClickListener{
             val intent = Intent(this, SummaryActivity::class.java)
-
             val getPresInput = binding.spinnerPresident.selectedItem.toString()
             val getVpInput = binding.spinnerVP.selectedItem.toString()
             val getSecretaryInput = binding.spinnerSecretary.selectedItem.toString()
             val getTreasurerInput = binding.spinnerSecretary.selectedItem.toString()
             val getProInput = binding.spinnerPro.selectedItem.toString()
-
+            intent.putExtra(FNAME, test)
             intent.putExtra(INPUT_PRESIDENT, getPresInput)
             intent.putExtra(INPUT_VP, getVpInput)
             intent.putExtra(INPUT_SECRETARY, getSecretaryInput)

@@ -16,7 +16,7 @@ import java.util.*
 
 class SummaryActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySummaryBinding
-
+    private var testAgain: String? = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySummaryBinding.inflate(layoutInflater)
@@ -27,6 +27,7 @@ class SummaryActivity : AppCompatActivity() {
         val secretary = intent.getStringExtra(INPUT_SECRETARY)
         val treasurer = intent.getStringExtra(INPUT_TREASURER)
         val pro = intent.getStringExtra(INPUT_PRO)
+        testAgain = intent.getStringExtra(FNAME)
 
         val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
 
@@ -40,6 +41,7 @@ class SummaryActivity : AppCompatActivity() {
 
         binding.btnNextConfirm.setOnClickListener {
             val intent = Intent ( this, ConfirmationActivity::class.java)
+            intent.putExtra(FNAME, testAgain)
             startActivityForResult(intent, REQUEST_CODE)
         }
 

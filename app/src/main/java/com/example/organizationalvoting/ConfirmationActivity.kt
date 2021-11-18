@@ -14,6 +14,7 @@ class ConfirmationActivity : AppCompatActivity() {
     private val conn by lazy {binding.txtCon}
     private var confirmation = "Confirmation"
     private  var end = "Thank you!"
+    private var test:String? = "test"
     //private  var time = "${Calendar.getInstance().time}"
 
     private lateinit var binding: ActivityConfirmationBinding
@@ -21,7 +22,7 @@ class ConfirmationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityConfirmationBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        test = intent.getStringExtra(FNAME)
         fun generateRandomString(len: Int = 15): String{
             val alphanumerics = CharArray(26) { it -> (it + 97).toChar() }.toSet()
                 .union(CharArray(9) { it -> (it + 48).toChar() }.toSet())
@@ -31,7 +32,7 @@ class ConfirmationActivity : AppCompatActivity() {
         }
 
 
-        val enteredfName = intent.getStringExtra(FNAME)
+        val enteredfName = test
         val enteredlName = intent.getStringExtra(LNAME)
 
         confirmation = "Confirmation: " + "#" + generateRandomString()
