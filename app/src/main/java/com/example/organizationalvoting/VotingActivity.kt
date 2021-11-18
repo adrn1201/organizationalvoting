@@ -29,7 +29,7 @@ class VotingActivity : AppCompatActivity() {
         binding = ActivityVotingBinding.inflate(layoutInflater)
         setContentView(binding.root)
         startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                result: ActivityResult -> validateIntent(result)
+           result: ActivityResult -> validateIntent(result)
         }
 
         val viewModel by viewModels<ViewModel>()
@@ -39,7 +39,7 @@ class VotingActivity : AppCompatActivity() {
 
     private fun validateIntent(result: ActivityResult) {
         if (result.resultCode == RESULT_OK) {
-            val intent = result.data/*?.getIntExtra(RETURN_KEY, 0)
+            val intent = result.data/*?.getStringExtra(RETURN_PRESIDENT)
             binding.editCoinAmount.setText(intent.toString())
             Snackbar.make(binding.editCoinAmount,
                 getString(R.string.snackBar_main, intent), Snackbar.LENGTH_SHORT).show()*/
@@ -76,8 +76,18 @@ class VotingActivity : AppCompatActivity() {
         }
         binding.btnNextSum.setOnClickListener{
             val intent = Intent(this, SummaryActivity::class.java)
-            val getInput = binding.spinnerPresident.selectedItem.toString()
-            intent.putExtra(INPUT_PRESIDENT, getInput)
+
+            val getPresInput = binding.spinnerPresident.selectedItem.toString()
+            val getVpInput = binding.spinnerVP.selectedItem.toString()
+            val getSecretaryInput = binding.spinnerSecretary.selectedItem.toString()
+            val getTreasurerInput = binding.spinnerSecretary.selectedItem.toString()
+            val getProInput = binding.spinnerPro.selectedItem.toString()
+
+            intent.putExtra(INPUT_PRESIDENT, getPresInput)
+            intent.putExtra(INPUT_VP, getVpInput)
+            intent.putExtra(INPUT_SECRETARY, getSecretaryInput)
+            intent.putExtra(INPUT_TREASURER, getTreasurerInput)
+            intent.putExtra(INPUT_PRO, getProInput)
             startForResult.launch(intent)
         }
     }
