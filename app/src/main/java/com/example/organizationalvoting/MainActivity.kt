@@ -26,13 +26,11 @@ class MainActivity : AppCompatActivity() {
             var sNumber = studentNumber.text.toString()
             var uSection = section.text.toString()
 
-            val intent = Intent ( this, VotingActivity::class.java)
-            intent.putExtra(FNAME, fName)
-            intent.putExtra(LNAME, lName)
-
-
 
             if(fName.trim().isNotEmpty() && lName.trim().isNotEmpty() && sNumber.trim().isNotEmpty() && uSection.trim().isNotEmpty()) {
+                val intent = Intent ( this, VotingActivity::class.java)
+                intent.putExtra(FNAME, fName)
+                intent.putExtra(LNAME, lName)
                 startActivityForResult(intent, REQUEST_CODE)
             }
 
