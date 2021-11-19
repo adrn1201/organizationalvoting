@@ -1,6 +1,6 @@
 package com.example.organizationalvoting.util
 
-class Helper {
+class VotingHelper {
     companion object{
         fun getPresidentData(): Array<String>{
             return arrayOf("Choose a President","Rastaman", "Manny Pacquiao", "Bong Go")

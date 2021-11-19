@@ -34,7 +34,7 @@ class VotingActivity : AppCompatActivity() {
         startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
            result: ActivityResult -> validateIntent(result)
         }
-        displayData(viewModel)
+        displayData()
         initializeComponents()
     }
 
@@ -43,7 +43,7 @@ class VotingActivity : AppCompatActivity() {
         spinner.adapter = adapter
     }
 
-    private fun displayData(viewModel: VotingViewModel) {
+    private fun displayData() {
         viewModel.president.observe(this) { getData(it, spinnerPresident) }
         viewModel.vicePresident.observe(this) { getData(it, spinnerVp) }
         viewModel.secretary.observe(this) { getData(it, spinnerSecretary) }
