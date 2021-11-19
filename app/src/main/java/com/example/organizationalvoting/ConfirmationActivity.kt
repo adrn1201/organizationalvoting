@@ -4,55 +4,38 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.organizationalvoting.databinding.ActivityConfirmationBinding
-import java.text.SimpleDateFormat
 import java.util.*
 
 class ConfirmationActivity : AppCompatActivity() {
-
+    private val confirmation by lazy {binding.txtCon}
     private val message by lazy {binding.txtMessage}
-    private val date by lazy {binding.txtDate}
-    private val conn by lazy {binding.txtCon}
-    private var confirmation = "Confirmation"
-    private  var end = "Thank you!"
-    private var test:String? = "test"
-    //private  var time = "${Calendar.getInstance().time}"
-
+    private var fName: String? = ""
+    private var lName: String? =""
     private lateinit var binding: ActivityConfirmationBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityConfirmationBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        test = intent.getStringExtra(FNAME)
-        fun generateRandomString(len: Int = 15): String{
-            val alphanumerics = CharArray(26) { it -> (it + 97).toChar() }.toSet()
-                .union(CharArray(9) { it -> (it + 48).toChar() }.toSet())
-            return (0..len-1).map {
-                alphanumerics.toList().random()
-            }.joinToString("")
-        }
+        displayData()
+        binding.btnDone.setOnClickListener{ redirectToHome() }
+    }
 
+    private fun getUserData() {
+        fName = intent.getStringExtra(F_NAME)
+        lName = intent.getStringExtra(L_NAME)
+    }
 
-        val enteredfName = test
-        val enteredlName = intent.getStringExtra(LNAME)
+    private fun displayData() {
+        val randomString = UUID.randomUUID().toString().substring(0,4)
+        getUserData()
+        binding.txtDate.text = "${Calendar.getInstance().time}"
+        confirmation.text = getString(R.string.reference, randomString)
+        message.text = getString(R.string.thank_you, fName, lName)
+    }
 
-        confirmation = "Confirmation: " + "#" + generateRandomString()
-        end = "Thank you! $enteredfName $enteredlName"
-
-        val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
-
-        binding.txtDate.text = formatter.format(Date())
-
-        conn.text = confirmation
-        message.text = end
-        //date.text = time
-
-
-
-
-        binding.btnDone.setOnClickListener {
-            val intent = Intent ( this, MainActivity::class.java)
-            intent.putExtra(FNAME, LNAME)
-            startActivityForResult(intent, REQUEST_CODE)
-        }
+    private fun redirectToHome() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }

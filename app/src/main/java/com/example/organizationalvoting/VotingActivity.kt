@@ -4,17 +4,15 @@ import android.R.layout.simple_spinner_item
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import com.example.organizationalvoting.databinding.ActivityVotingBinding
-import com.example.organizationalvoting.viewModel.ViewModel
-import com.google.android.material.snackbar.Snackbar
+import com.example.organizationalvoting.viewModel.VotingViewModel
 
 class VotingActivity : AppCompatActivity() {
     private lateinit var startForResult: ActivityResultLauncher<Intent>
@@ -24,38 +22,27 @@ class VotingActivity : AppCompatActivity() {
     private val spinnerSecretary by lazy { binding.spinnerSecretary }
     private val spinnerTreasurer by lazy { binding.spinnerTreasurer }
     private val spinnerPro by lazy { binding.spinnerPro }
-    private val viewModel by viewModels<ViewModel>()
-    private var test: String? = "test"
+    private val viewModel by viewModels<VotingViewModel>()
+    private var fName: String? = ""
+    private var lName: String? =""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVotingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        test = intent.getStringExtra(FNAME)
         startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
            result: ActivityResult -> validateIntent(result)
         }
-
-        binding.btnBackRegister.setOnClickListener {
-            val intent = Intent ( this, MainActivity::class.java)
-            startActivityForResult(intent, REQUEST_CODE)
-        }
-
-
         displayData(viewModel)
         initializeComponents()
-
     }
 
-    private fun validateIntent(result: ActivityResult) {
-       if (result.resultCode == RESULT_OK) {
-          val intent = result.data?.getStringExtra(RETURN_PRESIDENT)
-           //binding.spinnerPresident.set(intent.toString())
-           /*Snackbar.make(binding.editCoinAmount,
-               getString(R.string.snackBar_main, intent), Snackbar.LENGTH_SHORT).show()*/
-      }
-   }
+    private fun getData(it: Array<String>, spinner:Spinner) {
+        val adapter = ArrayAdapter(this, simple_spinner_item, it)
+        spinner.adapter = adapter
+    }
 
-    private fun displayData(viewModel: ViewModel) {
+    private fun displayData(viewModel: VotingViewModel) {
         viewModel.president.observe(this) { getData(it, spinnerPresident) }
         viewModel.vicePresident.observe(this) { getData(it, spinnerVp) }
         viewModel.secretary.observe(this) { getData(it, spinnerSecretary) }
@@ -63,31 +50,54 @@ class VotingActivity : AppCompatActivity() {
         viewModel.pro.observe(this) { getData(it, spinnerPro) }
     }
 
-    private fun getData(it: Array<String>, spinner:Spinner) {
-        val adapter = ArrayAdapter(this, simple_spinner_item, it)
-        spinner.adapter = adapter
-
+    private fun initializeComponents() {
+        binding.btnNextSum.setOnClickListener{ sendData() }
+        binding.btnBackRegister.setOnClickListener { navigateBack() }
     }
 
-    private fun initializeComponents() {
-        spinnerPresident.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {}
-            override fun onNothingSelected(parent: AdapterView<*>) {}
-        }
-        binding.btnNextSum.setOnClickListener{
+    private fun getUserData(){
+        fName = intent.getStringExtra(F_NAME)
+        lName = intent.getStringExtra(L_NAME)
+    }
+
+    private fun sendData() {
+        val getPresInput = binding.spinnerPresident.selectedItem.toString()
+        val getVpInput = binding.spinnerVP.selectedItem.toString()
+        val getSecretaryInput = binding.spinnerSecretary.selectedItem.toString()
+        val getTreasurerInput = binding.spinnerSecretary.selectedItem.toString()
+        val getProInput = binding.spinnerPro.selectedItem.toString()
+        getUserData()
+
+        if (viewModel.validateSelectedItem(getPresInput, getVpInput, getSecretaryInput, getTreasurerInput, getProInput)) {
             val intent = Intent(this, SummaryActivity::class.java)
-            val getPresInput = binding.spinnerPresident.selectedItem.toString()
-            val getVpInput = binding.spinnerVP.selectedItem.toString()
-            val getSecretaryInput = binding.spinnerSecretary.selectedItem.toString()
-            val getTreasurerInput = binding.spinnerSecretary.selectedItem.toString()
-            val getProInput = binding.spinnerPro.selectedItem.toString()
-            intent.putExtra(FNAME, test)
+            intent.putExtra(F_NAME, fName)
+            intent.putExtra(L_NAME, lName)
             intent.putExtra(INPUT_PRESIDENT, getPresInput)
             intent.putExtra(INPUT_VP, getVpInput)
             intent.putExtra(INPUT_SECRETARY, getSecretaryInput)
             intent.putExtra(INPUT_TREASURER, getTreasurerInput)
             intent.putExtra(INPUT_PRO, getProInput)
             startForResult.launch(intent)
+        }else{
+            Toast.makeText(this, getString(R.string.empty_candidate), Toast.LENGTH_SHORT).show()
         }
     }
+
+    private fun navigateBack() {
+        val data = Intent()
+        setResult(RESULT_OK, data)
+        super.finish()
+    }
+
+    private fun validateIntent(result: ActivityResult) {
+       if (result.resultCode == RESULT_OK) {
+          result.data?.getStringExtra(RETURN_PRESIDENT)
+          result.data?.getStringExtra(RETURN_VP)
+          result.data?.getStringExtra(RETURN_Secretary)
+          result.data?.getStringExtra(RETURN_Treasurer)
+          result.data?.getStringExtra(RETURN_Pro)
+      }
+   }
+
+
 }

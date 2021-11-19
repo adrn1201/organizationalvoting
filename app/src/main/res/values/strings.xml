@@ -1,12 +1,7 @@
 <resources>
     <string name="app_name">Organizational Voting</string>
-    <string name="selected_president">Selected President:</string>
-    <string-array name="president">
-        <item>Leni Robredo</item>
-        <item>BongBong Marcos</item>
-        <item>Rastaman</item>
-        <item>Manny Pacquiao</item>
-        <item>Bong Go</item>
-        <item>Ping Lacson</item>
-    </string-array>
+    <string name="reference">Reference #: %s</string>
+    <string name="empty_register">Please fill up all the fields</string>
+    <string name="thank_you">Thank you! %s %s</string>
+    <string name="empty_candidate">Please choose a Candidate</string>
 </resources>

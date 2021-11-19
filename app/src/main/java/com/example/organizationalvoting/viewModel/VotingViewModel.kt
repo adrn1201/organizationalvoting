@@ -3,9 +3,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.organizationalvoting.util.Helper
-import com.google.android.material.snackbar.Snackbar
 
-class ViewModel: ViewModel() {
+class VotingViewModel: ViewModel() {
     private val _president = MutableLiveData<Array<String>>()
     private val _vicePresident = MutableLiveData<Array<String>>()
     private val _secretary = MutableLiveData<Array<String>>()
@@ -26,10 +25,11 @@ class ViewModel: ViewModel() {
         _pro.value = Helper.getPro()
     }
 
-    fun test(value: Any): Boolean{
-        if(value.toString() == "Choose a President"){
+    fun validateSelectedItem(presValue: Any, vpValue:Any, secretaryValue: Any, treasurerValue: Any, proValue:Any): Boolean{
+        if(presValue.toString() == _president.value?.get(0) || vpValue.toString() == _vicePresident.value?.get(0) || secretaryValue.toString() == _secretary.value?.get(0) || treasurerValue.toString() == _treasurer.value?.get(0) || proValue.toString() == _pro.value?.get(0)){
             return false
         }
         return true
     }
+
 }

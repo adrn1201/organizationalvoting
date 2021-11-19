@@ -1,59 +1,71 @@
 package com.example.organizationalvoting
 
-import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import com.example.organizationalvoting.databinding.ActivitySummaryBinding
-import java.text.SimpleDateFormat
 
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class SummaryActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySummaryBinding
-    private var testAgain: String? = ""
+    private var president: String? = ""
+    private var vp: String? = ""
+    private var secretary: String? = ""
+    private var treasurer: String? = ""
+    private var pro: String? = ""
+    private var fName: String? = ""
+    private var lName: String? =""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySummaryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        displayData()
+        initializeComponents()
+    }
 
-        val president = intent.getStringExtra(INPUT_PRESIDENT)
-        val vp = intent.getStringExtra(INPUT_VP)
-        val secretary = intent.getStringExtra(INPUT_SECRETARY)
-        val treasurer = intent.getStringExtra(INPUT_TREASURER)
-        val pro = intent.getStringExtra(INPUT_PRO)
-        testAgain = intent.getStringExtra(FNAME)
+    private fun getData() {
+        president = intent.getStringExtra(INPUT_PRESIDENT)
+        vp = intent.getStringExtra(INPUT_VP)
+        secretary = intent.getStringExtra(INPUT_SECRETARY)
+        treasurer = intent.getStringExtra(INPUT_TREASURER)
+        pro = intent.getStringExtra(INPUT_PRO)
+        fName = intent.getStringExtra(F_NAME)
+        lName = intent.getStringExtra(L_NAME)
+    }
 
-        val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
-
-        binding.dateTime.text = formatter.format(Date())
-
+    private fun displayData() {
+        getData()
+        binding.dateTime.text = "${Calendar.getInstance().time}"
         binding.president.text = president
         binding.vicePresident.text = vp
         binding.secretary.text = secretary
         binding.treaasurer.text = treasurer
         binding.PRO.text = pro
-
-        binding.btnNextConfirm.setOnClickListener {
-            val intent = Intent ( this, ConfirmationActivity::class.java)
-            intent.putExtra(FNAME, testAgain)
-            startActivityForResult(intent, REQUEST_CODE)
-        }
-
-        binding.btnBackVote.setOnClickListener {
-            val data = Intent()
-            data.putExtra(RETURN_PRESIDENT, president)
-            setResult(Activity.RESULT_OK, data)
-            super.finish()
-        }
-
-
     }
 
+    private fun initializeComponents() {
+        binding.btnNextConfirm.setOnClickListener { sendData() }
+        binding.btnBackVote.setOnClickListener { returnData() }
+    }
 
+    private fun sendData() {
+        val intent = Intent(this, ConfirmationActivity::class.java).apply {
+            putExtra(F_NAME, fName)
+            putExtra(L_NAME, lName)
+        }
+        startActivity(intent)
+    }
+
+    private fun returnData() {
+        val data = Intent()
+        data.putExtra(INPUT_PRESIDENT, president)
+        data.putExtra(INPUT_VP, vp)
+        data.putExtra(INPUT_SECRETARY, secretary)
+        data.putExtra(INPUT_TREASURER, treasurer)
+        data.putExtra(INPUT_PRO, pro)
+        setResult(RESULT_OK, data)
+        super.finish()
+    }
 }
