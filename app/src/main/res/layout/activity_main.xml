@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pinkish"
+    android:background="@drawable/gradient_background"
     tools:context=".MainActivity">
 
     <ImageView
@@ -17,7 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread"
-        app:srcCompat="@drawable/user" />
+        app:srcCompat="@drawable/user"
+        android:contentDescription="@string/logo" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
@@ -35,7 +36,7 @@
             android:id="@+id/user_Number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Student Number" />
+            android:hint="@string/hint_student_number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -52,7 +53,7 @@
             android:id="@+id/user_Section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Section" />
+            android:hint="@string/hint_section" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -69,7 +70,7 @@
             android:id="@+id/user_Fname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="First Name" />
+            android:hint="@string/hint_first_name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -86,14 +87,14 @@
             android:id="@+id/user_Lname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Last Name" />
+            android:hint="@string/hint_last_name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnLog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LOGIN"
+        android:text="@string/btn_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

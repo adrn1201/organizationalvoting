@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pinkish"
+    android:background="@drawable/gradient_background"
     tools:context=".SummaryActivity">
 
     <TextView
@@ -12,8 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
-        android:text="Summary of votes"
-        android:textSize="25dp"
+        android:text="@string/label_summary_of_votes"
+        android:textSize="25sp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/date_time"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +28,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
-        android:text="TextView"
+        android:text=""
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/textPresident"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -38,12 +40,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:text="President"
-        android:textSize="20dp"
+        android:text="@string/label_president"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/president"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.132"
+        app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -51,10 +54,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:text="TextView"
+        android:text=""
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/textVicePresident"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -62,12 +66,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:text="Vice President"
-        android:textSize="20dp"
+        android:text="@string/label_vp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/vicePresident"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.154"
+        app:layout_constraintHorizontal_bias="0.147"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -75,10 +80,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="TextView"
+        android:text=""
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/textSecretary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -86,12 +92,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:text="Secretary"
-        android:textSize="20dp"
+        android:text="@string/label_secretary"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/secretary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.132"
+        app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -99,10 +106,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:text="TextView"
+        android:text=""
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/textTreasurer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -110,23 +118,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:text="Treasurer"
-        android:textSize="20dp"
+        android:text="@string/label_treasurer"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/treaasurer"
+        app:layout_constraintBottom_toTopOf="@+id/treasurer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/treaasurer"
+        android:id="@+id/treasurer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
-        android:text="TextView"
+        android:text=""
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/textP.R.O"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -134,12 +144,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:text="P.R.O."
-        android:textSize="20dp"
+        android:text="@string/label_pro"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/PRO"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
+        app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -147,10 +158,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="124dp"
-        android:text="TextView"
+        android:text=""
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -158,7 +170,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:text="Back"
+        android:text="@string/btn_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnNextConfirm"
         app:layout_constraintHorizontal_bias="0.553"
@@ -172,7 +184,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="72dp"
         android:layout_marginBottom="30dp"
-        android:text="Next"
+        android:text="@string/btn_next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PRO"

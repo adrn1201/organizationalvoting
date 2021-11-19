@@ -13,6 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import com.example.organizationalvoting.databinding.ActivityVotingBinding
 import com.example.organizationalvoting.viewModel.VotingViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class VotingActivity : AppCompatActivity() {
     private lateinit var startForResult: ActivityResultLauncher<Intent>
@@ -79,7 +80,7 @@ class VotingActivity : AppCompatActivity() {
             intent.putExtra(INPUT_PRO, getProInput)
             startForResult.launch(intent)
         }else{
-            Toast.makeText(this, getString(R.string.empty_candidate), Toast.LENGTH_SHORT).show()
+            Snackbar.make(binding.root, getString(R.string.empty_candidate), Snackbar.LENGTH_SHORT).show()
         }
     }
 

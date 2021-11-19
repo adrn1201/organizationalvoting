@@ -4,4 +4,21 @@
     <string name="empty_register">Please fill up all the fields</string>
     <string name="thank_you">Thank you! %s %s</string>
     <string name="empty_candidate">Please choose a Candidate</string>
+    <string name="label_president">President:</string>
+    <string name="label_vp">Vice President:</string>
+    <string name="label_secretary">Secretary:</string>
+    <string name="label_treasurer">Treasurer:</string>
+    <string name="label_pro">P.R.O.</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_next">Next</string>
+    <string name="hint_student_number">Student Number</string>
+    <string name="hint_section">Section</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="logo">logo</string>
+    <string name="label_summary_of_votes">Summary of Votes</string>
+    <string name="success">success</string>
+    <string name="feedback_vote_saved">Vote Saved</string>
+    <string name="done">Done</string>
 </resources>

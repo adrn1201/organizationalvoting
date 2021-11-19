@@ -41,7 +41,7 @@ class SummaryActivity : AppCompatActivity() {
         binding.president.text = president
         binding.vicePresident.text = vp
         binding.secretary.text = secretary
-        binding.treaasurer.text = treasurer
+        binding.treasurer.text = treasurer
         binding.PRO.text = pro
     }
 

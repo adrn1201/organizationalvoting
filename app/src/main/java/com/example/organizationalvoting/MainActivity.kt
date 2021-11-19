@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.organizationalvoting.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }else {
-            Toast.makeText(applicationContext, getString(R.string.empty_register), Toast.LENGTH_SHORT).show()
+            Snackbar.make(binding.root, getString(R.string.empty_register), Snackbar.LENGTH_SHORT).show()
         }
     }
 }
