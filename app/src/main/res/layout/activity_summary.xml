@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:text="@string/label_summary_of_votes"
-        android:textSize="25sp"
         android:textColor="@color/black"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/date_time"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,9 +83,7 @@
         android:text=""
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/textSecretary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/president" />
 
     <TextView
         android:id="@+id/textSecretary"
@@ -109,9 +107,7 @@
         android:text=""
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/textTreasurer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/vicePresident" />
 
     <TextView
         android:id="@+id/textTreasurer"
@@ -135,9 +131,7 @@
         android:text=""
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/textP.R.O"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/secretary" />
 
     <TextView
         android:id="@+id/textP.R.O"
@@ -161,16 +155,14 @@
         android:text=""
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/treasurer" />
 
     <Button
         android:id="@+id/btnBackVote"
-        android:backgroundTint="@color/btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/btn_back"
         android:text="@string/btn_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnNextConfirm"
