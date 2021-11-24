@@ -64,7 +64,7 @@ class VotingActivity : AppCompatActivity() {
         val getPresInput = binding.spinnerPresident.selectedItem.toString()
         val getVpInput = binding.spinnerVP.selectedItem.toString()
         val getSecretaryInput = binding.spinnerSecretary.selectedItem.toString()
-        val getTreasurerInput = binding.spinnerSecretary.selectedItem.toString()
+        val getTreasurerInput = binding.spinnerTreasurer.selectedItem.toString()
         val getProInput = binding.spinnerPro.selectedItem.toString()
         getUserData()
 
